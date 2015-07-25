@@ -11,7 +11,7 @@ MHA for MySQL5.5 Systemd用のUnit設定ファイル
 
 ```
 git clone https://github.com/kuronuko/systemd_unit_config.git 
-cd systemd_unit_config
+cd systemd_unit_config-master
 sudo mv /etc/init.d/mysql /var/tmp/
 sudo mv mysql/mysql.service /usr/lib/systemd/system/
 sudo mv mha/mysql-mha.service /usr/lib/systemd/system/
