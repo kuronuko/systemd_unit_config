@@ -1,0 +1,28 @@
+[Unit]
+Description=MySQL5.5 Database Server
+After=syslog.target 
+After=network.target 
+# After=remote-fs.target
+# After=nss-lookup.target
+ 
+[Service]
+# Service Process起動完了の判定方法(simple/forking/oneshot)
+Type=simple
+User=mysql
+Group=mysql
+
+PIDFile=/var/run/mysqld/mysqld.pid
+WorkingDirectory=/var/lib/mysql/
+ExecStart=/usr/bin/mysqld_safe --basedir=/usr
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+# PrivateTmp=true
+
+# Give a reasonable amount of time for the server to startup/shutdown
+TimeoutSec=900
+
+# Place temp files in a secure directory, not /tmp
+PrivateTmp=true
+ 
+[Install]
+WantedBy=multi-user.target
